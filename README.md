@@ -1,2 +1,2 @@
 # bookbot
-This bookbot will print statistics of simple text files.
+BookBot is my first project!
