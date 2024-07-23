@@ -1,2 +1,2 @@
 # bookbot
-print statistics of text files
+This bookbot will print statistics of simple text files.
