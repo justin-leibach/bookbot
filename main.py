@@ -9,8 +9,6 @@ def main():
     #print(lower_case)
     print(c_count)
     
-
-#character_dict = {}
     
 #  Uses book_path variable as a file handle to open file and read text    
 def get_book_text(path):
@@ -29,12 +27,11 @@ def character_count(x):
     new_set = set(character_list)
     character_dict = {}
     for key in new_set:
-        character_dict[key] = character_list.count(key)
+        #  key.isalpha() determines if key in new_set is an alphabetic character (==True)
+        if key.isalpha():
+            character_dict[key] = character_list.count(key)
     return character_dict
     #print(new_set)
 
 
 main()
-
-#should I use a set with some sort of iteration to populate a dictionary?
-#how do i populate the list without manually iterating a-z?
