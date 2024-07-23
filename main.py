@@ -22,16 +22,14 @@ def word_count(x):
     y = x.split()
     return len(y)
 
-# **DRAFT** Convert all text into lowercase, create a set to eliminate duplicates, create dictionary and populate with unique set items ***
-#   Still need to add counts to the dictionary using the unique keys (?how to add to dict, how to iterate?)
+#  Convert all text into lowercase, create a set to eliminate duplicates, initialize dictionary, populate with unique set items, count unique set items
 def character_count(x): 
     lower_case = x.lower()
     character_list = list(lower_case)
     new_set = set(character_list)
-    character_dict = dict.fromkeys(new_set, 0)
-    #for i in new_set:
-        
-    
+    character_dict = {}
+    for key in new_set:
+        character_dict[key] = character_list.count(key)
     return character_dict
     #print(new_set)
 
