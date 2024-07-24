@@ -1,15 +1,13 @@
 def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
-    #lower_case = text.lower()
     words = word_count(text)
     c_count = character_count(text)
     sorted_dict = sort_dict(c_count)
-    #print(text)
-    #print(words)
-    #print(lower_case)
-    #print(c_count)
-    print(sorted_dict)
+    print(f"--- Begin report on {book_path} ---")
+    print(f"{words} words wer found in the document")
+    report(sorted_dict)
+    print("--- End report ---")
     
     
 #  Uses book_path variable as a file handle to open file and read text    
@@ -51,22 +49,13 @@ def sort_dict(x):
     list_of_dict.sort(reverse=True, key=sort_on)
     return list_of_dict
 
+#  iterate through the dictionary, assign variables to the keys, and return the values in an f string for each item in the list of dicts
+def report(x):
+    for i in x:
+        character = i["letter"]
+        number = i["num"]
+        print(f"The '{character}' character appeared '{number}' times")
+        
+
 
 main()
-
-'''
-copy from the boot.dev site
-# A function that takes a dictionary and returns the value of the "num" key
-# This is how the `.sort()` method knows how to sort the list of dictionaries
-def sort_on(dict):
-    return dict["num"]
-
-vehicles = [
-    {"name": "car", "num": 7},
-    {"name": "plane", "num": 10},
-    {"name": "boat", "num": 2}
-]
-vehicles.sort(reverse=True, key=sort_on)
-print(vehicles)
-# [{'name': 'plane', 'num': 10}, {'name': 'car', 'num': 7}, {'name': 'boat', 'num': 2}]
-'''
