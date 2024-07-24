@@ -4,10 +4,12 @@ def main():
     #lower_case = text.lower()
     words = word_count(text)
     c_count = character_count(text)
+    sorted_dict = sort_dict(c_count)
     #print(text)
     #print(words)
     #print(lower_case)
-    print(c_count)
+    #print(c_count)
+    print(sorted_dict)
     
     
 #  Uses book_path variable as a file handle to open file and read text    
@@ -33,5 +35,38 @@ def character_count(x):
     return character_dict
     #print(new_set)
 
+#  Entire function first creates a list of dictionaries, then sorts by new designated keys, returning the list of dictionaries
+def sort_dict(x):
+    list_of_dict = []
+    #  iterates through existing dictionary, creates a new "temp_dict" to wrap the existing dictionary with new keys mapped to the key/value pair
+    for key,value in x.items():
+        temp_dict = {"letter": key, "num":value}
+        list_of_dict.append(temp_dict)
+
+    #  blanket function to sort a dictionary by a key. In this case, the key is "num"
+    def sort_on(dict):
+        return dict["num"]    
+    
+    #  uses the sort_on function to sort the list_of_dict by number, starting at the highest first
+    list_of_dict.sort(reverse=True, key=sort_on)
+    return list_of_dict
+
 
 main()
+
+'''
+copy from the boot.dev site
+# A function that takes a dictionary and returns the value of the "num" key
+# This is how the `.sort()` method knows how to sort the list of dictionaries
+def sort_on(dict):
+    return dict["num"]
+
+vehicles = [
+    {"name": "car", "num": 7},
+    {"name": "plane", "num": 10},
+    {"name": "boat", "num": 2}
+]
+vehicles.sort(reverse=True, key=sort_on)
+print(vehicles)
+# [{'name': 'plane', 'num': 10}, {'name': 'car', 'num': 7}, {'name': 'boat', 'num': 2}]
+'''
